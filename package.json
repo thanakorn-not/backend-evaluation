@@ -8,7 +8,7 @@
     "dev": "nodemon server.js",
     "db:push": "npx prisma db push",
     "db:seed": "node prisma/seed.js",
-    "postinstall": "prisma generate"
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^6.19.2",
@@ -18,11 +18,11 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
+    "prisma": "^6.19.2",
     "swagger-ui-express": "^5.0.0",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0",
-    "prisma": "^6.19.2"
+    "nodemon": "^3.1.0"
   }
 }
