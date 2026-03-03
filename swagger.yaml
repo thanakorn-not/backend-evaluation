@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  title: Personnel Assessment API
+  version: 1.0.0
+  description: API for the Personnel Assessment System
+servers:
+  - url: http://localhost:3000
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /api/auth/login:
+    post:
+      summary: User login
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Successful login
+
+  /api/auth/register:
+    post:
+      summary: User registration
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                role:
+                  type: string
+                  enum: [ADMIN, EVALUATOR, EVALUATEE]
+                departmentId:
+                  type: integer
+      responses:
+        '201':
+          description: Created
+
+  /api/auth/me:
+    get:
+      summary: Get my profile
+      tags: [Auth]
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Success

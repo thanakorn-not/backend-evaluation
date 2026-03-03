@@ -1,0 +1,281 @@
+{
+    "info": {
+        "name": "Personnel Assessment API",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Login Evaluator",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"evaluator@example.com\",\"password\":\"password123\"}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login Evaluatee",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"evaluatee@example.com\",\"password\":\"password123\"}"
+                        }
+                    }
+                },
+                {
+                    "name": "Login Admin",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/auth/login",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "login"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"admin@example.com\",\"password\":\"password123\"}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Admin",
+            "item": [
+                {
+                    "name": "Get Evaluations",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/admin/evaluations",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "admin",
+                                "evaluations"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Evaluatee",
+            "item": [
+                {
+                    "name": "Upload Evidence",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{evaluateeToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/me/evaluations/1/evidence",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "me",
+                                "evaluations",
+                                "1",
+                                "evidence"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "indicatorId",
+                                    "value": "1",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "evidence",
+                                    "type": "file",
+                                    "src": ""
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Evaluator",
+            "item": [
+                {
+                    "name": "Get Evaluations for Evaluator",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{evaluatorToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/evaluator/evaluations/1",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "evaluator",
+                                "evaluations",
+                                "1"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Give Score",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{evaluatorToken}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/evaluator/assignments/1/score",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "evaluator",
+                                "assignments",
+                                "1",
+                                "score"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"indicatorId\": 1, \"score\": 3}"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reports",
+            "item": [
+                {
+                    "name": "Get Result (Admin/Evaluator/Evaluatee)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{adminToken}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/reports/evaluation/1/result",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "reports",
+                                "evaluation",
+                                "1",
+                                "result"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://localhost:3000",
+            "type": "string"
+        },
+        {
+            "key": "adminToken",
+            "value": "YOUR_ADMIN_TOKEN",
+            "type": "string"
+        },
+        {
+            "key": "evaluatorToken",
+            "value": "YOUR_EVALUATOR_TOKEN",
+            "type": "string"
+        },
+        {
+            "key": "evaluateeToken",
+            "value": "YOUR_EVALUATEE_TOKEN",
+            "type": "string"
+        }
+    ]
+}
